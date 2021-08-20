@@ -28,6 +28,7 @@
       :clipped-left="clipped"
       fixed
       app
+      color="yellow lighten-1"
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-btn
@@ -92,7 +93,7 @@
 export default {
   data () {
     return {
-      clipped: false,
+      clipped: true,
       drawer: false,
       fixed: false,
       items: [
