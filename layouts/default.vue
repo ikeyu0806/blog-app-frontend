@@ -97,20 +97,30 @@ export default {
       fixed: false,
       items: [
         {
-          icon: 'mdi-apps',
-          title: 'Welcome',
+          icon: 'mdi-note-multiple',
+          title: '記事一覧',
           to: '/'
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
+          icon: 'mdi-grease-pencil',
+          title: '記事を投稿する',
+          to: '/new_post'
+        },
+        {
+          icon: 'mdi-account',
+          title: 'マイページ',
+          to: '/mypage'
+        },
+        {
+          icon: 'mdi-account-multiple',
+          title: 'ユーザ一覧',
+          to: '/user_index'
         }
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'yikegaya blog app'
     }
   }
 }
