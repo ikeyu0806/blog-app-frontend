@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import NewPost from '~/components/NewPost'
+import NewPost from '~/components/Post/NewPost'
 export default {
   components: {
     NewPost

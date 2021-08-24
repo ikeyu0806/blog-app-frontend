@@ -77,12 +77,12 @@ export default {
         {
           icon: 'mdi-note-multiple',
           title: '記事一覧',
-          to: '/'
+          to: '/post/index_post'
         },
         {
           icon: 'mdi-grease-pencil',
           title: '記事を投稿する',
-          to: '/new_post'
+          to: '/post/new_post'
         },
         {
           icon: 'mdi-account',
@@ -92,7 +92,7 @@ export default {
         {
           icon: 'mdi-account-multiple',
           title: 'ユーザ一覧',
-          to: '/user_index'
+          to: '/user/'
         },
         {
           icon: 'mdi-account-plus',
