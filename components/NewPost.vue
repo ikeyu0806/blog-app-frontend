@@ -1,19 +1,20 @@
 <template>
   <div>
-    <h2>記事を投稿する</h2>
     <v-container fluid>
+      <h2>記事を投稿する</h2>
+      <br />
       <v-form
         ref="form"
-        v-model="valid"
-        lazy-validation
       >
         <v-text-field
           label="タイトル"
           outlined
+          v-model="title"
         ></v-text-field>
         <v-textarea
           label="本文"
           outlined
+          v-model="content"
           name="post-content"
           value=""
           rows=30
@@ -34,11 +35,18 @@
 import axios from 'axios'
 
 export default {
+  data: {
+    title: '',
+    content: ''
+  },
   methods: {
     postForm () {
-      axios.get('http://localhost:6000')
-           .then(response => console.log(response))
-           .catch(error => console.log(error))
+      axios.post('http://localhost:5001/create_post', { 
+        title: this.title,
+        content: this.content
+      })
+        .then(response => console.log(response))
+        .catch(error => console.log(error))
     }
   }
 }
