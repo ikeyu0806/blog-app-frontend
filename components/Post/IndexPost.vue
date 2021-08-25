@@ -16,7 +16,7 @@
       :key="post.title"
     >
       <td>{{ post.title }}</td>
-      <td>投稿者</td>
+      <td>{{ post.user_name == null ? '匿名投稿' : post.user_name }}</td>
     </tr>
   </tbody>
   </v-simple-table>
