@@ -108,7 +108,13 @@ export default {
         email: this.email,
         password: this.password
       })
-        .then(response => console.log(response))
+        .then(response => {
+          console.log(response)
+          localStorage.setItem("yikegayaBlogSessionId", response.data.sessionId)
+          localStorage.setItem("yikegayaBlogUserId", response.data.user_id)
+          localStorage.setItem("yikegayaBlogUserName", response.data.user_name)
+          this.$router.push({ path: '/user/' })
+        })
         .catch(error => console.log(error))
     }
   }
