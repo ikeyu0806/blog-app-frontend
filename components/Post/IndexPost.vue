@@ -33,8 +33,10 @@ export default {
   },
   mounted: function () {
     axios.get('http://localhost:5001/posts')
-      .then(response => (this.posts = response.data.posts))
-      // .then(response => (console.log(response)))
+      .then(response => {
+        console.log(response)
+        this.posts = response.data.posts
+      })
       .catch(error => console.log(error))
   }
 }

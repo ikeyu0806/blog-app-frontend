@@ -1,3 +1,11 @@
 <template>
-  <h2>ユーザ一覧</h2>
+  <IndexUser></IndexUser>
 </template>
+<script>
+import IndexUser from '~/components/User/IndexUser'
+export default {
+  components: {
+    IndexUser
+  }
+}
+</script>
