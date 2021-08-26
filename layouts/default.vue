@@ -77,7 +77,7 @@ export default {
         {
           icon: 'mdi-note-multiple',
           title: '記事一覧',
-          to: '/post/index_post'
+          to: '/post/'
         },
         {
           icon: 'mdi-grease-pencil',

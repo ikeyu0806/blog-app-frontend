@@ -45,7 +45,10 @@ export default {
         title: this.title,
         content: this.content
       })
-        .then(response => console.log(response))
+        .then(response => {
+          console.log(response)
+          this.$router.push({ path: '/post/' })
+        })
         .catch(error => console.log(error))
     }
   }
