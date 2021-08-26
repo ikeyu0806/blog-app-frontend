@@ -13,10 +13,9 @@
       v-model="valid"
     >
       <v-text-field
-        v-model="name"
-        :counter="30"
-        :rules="nameRules"
-        label="ユーザ名"
+        v-model="email"
+        :rules="emailRules"
+        label="メールアドレス"
         required
       ></v-text-field>
 
@@ -42,19 +41,18 @@
 </template>
 
 <script>
-/* eslint-disable */
+import axios from 'axios'
+
 export default {
-  data () {
+  data: function() {
     return {
-      name: '',
-      nameRules: [
-        v => !!v || '名前は必須項目です。',
-        v => (v && v.length <= 30) || '名前は30文字以下で入力してください。',
+      email: '',
+      emailRules: [
+        v => !!v || 'メールアドレスは必須項目です。'
       ],
       password: '',
       passwordRules: [
-        v => !!v || 'パスワードは必須項目です。',
-        v => (v && v.length >= 8) || 'パスワードは半角英数字8文字以上で入力してください。',
+        v => !!v || 'パスワードは必須項目です。'
       ],
       sendMessage: '',
       loginFailure: false,
@@ -70,7 +68,12 @@ export default {
       this.$router.push({path: '/', query: {loginSuccess: this.loginSuccess}})
     },
     async loginUser () {
-      console.log("未実装")
+      axios.post('http://localhost:5001/login', { 
+        email: this.email,
+        password: this.password
+      })
+      .then(response => console.log(response))
+      .catch(error => console.log(error))
     }
   }
 }
