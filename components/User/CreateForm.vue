@@ -63,7 +63,8 @@
 </template>
 
 <script>
-/* eslint-disable */
+import axios from 'axios'
+
 export default {
   data () {
     return {
@@ -101,8 +102,14 @@ export default {
     returnTop(){
       this.$router.push({path: '/', query: {createSuccess: this.createSuccess}})
     },
-    async registerUser () {
-      console.log("未実装")
+    registerUser () {
+      axios.post('http://localhost:5001/create_user', { 
+        name: this.name,
+        email: this.email,
+        password: this.password
+      })
+        .then(response => console.log(response))
+        .catch(error => console.log(error))
     }
   }
 }
