@@ -14,9 +14,9 @@
     <tr
       v-for="post in posts"
       :key="post.title"
-    >
-      <td>{{ post.title }}</td>
-      <td>{{ post.user_name == null ? '匿名投稿' : post.user_name }}</td>
+    > 
+      <td @click="postDetail(post.id)">{{ post.title }}</td>
+      <td @click="postDetail(post.id)">{{ post.user_name == null ? '匿名投稿' : post.user_name }}</td>
     </tr>
   </tbody>
   </v-simple-table>
@@ -30,6 +30,11 @@ export default {
     return {
       posts: []
     }
+  },
+  methods: {
+    postDetail (id) {
+      this.$router.push({ path: `/post/${id}` })
+    },
   },
   mounted: function () {
     axios.get('http://localhost:5001/posts')
