@@ -35,9 +35,11 @@
 import axios from 'axios'
 
 export default {
-  data: {
-    title: '',
-    content: ''
+  data: function() {
+    return {
+      title: '',
+      content: ''
+    }
   },
   methods: {
     postForm () {

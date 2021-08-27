@@ -22,7 +22,7 @@
 import axios from 'axios'
 
 export default {
-  data () {
+  data: function () {
     return {
       users: []
     }
