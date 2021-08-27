@@ -87,7 +87,7 @@ export default {
         {
           icon: 'mdi-account',
           title: 'マイページ',
-          to: '/mypage'
+          to: '/user/mypage'
         },
         {
           icon: 'mdi-account-multiple',
