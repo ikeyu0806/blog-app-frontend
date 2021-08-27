@@ -43,7 +43,8 @@ export default {
     postForm () {
       axios.post(`${process.env.backendUrl}/create_post`, { 
         title: this.title,
-        content: this.content
+        content: this.content,
+        user_id: Number(localStorage.getItem("yikegayaBlogUserId"))
       })
         .then(response => {
           console.log(response)
