@@ -68,7 +68,7 @@ export default {
       this.$router.push({path: '/', query: {loginSuccess: this.loginSuccess}})
     },
     async loginUser () {
-      axios.post('http://localhost:5001/login', { 
+      axios.post(`${process.env.backendUrl}/login`, { 
         email: this.email,
         password: this.password
       })

@@ -20,7 +20,7 @@ export default {
     }
   },
   mounted: function () {
-    axios.get(`http://localhost:5001/post/${this.$route.params.id}`)
+    axios.get(`${process.env.backendUrl}/post/${this.$route.params.id}`)
       .then(response => {
         console.log(response.data.post)
         this.post = response.data.post

@@ -28,7 +28,7 @@ export default {
     }
   },
   mounted: function () {
-    axios.get('http://localhost:5001/users')
+    axios.get(`${process.env.backendUrl}/users`)
       .then(response => (this.users = response.data.users))
       // .then(response => (console.log(response)))
       .catch(error => console.log(error))

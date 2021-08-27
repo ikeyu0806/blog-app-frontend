@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     postForm () {
-      axios.post('http://localhost:5001/create_post', { 
+      axios.post(`${process.env.backendUrl}/create_post`, { 
         title: this.title,
         content: this.content
       })

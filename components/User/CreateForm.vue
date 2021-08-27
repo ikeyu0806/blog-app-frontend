@@ -103,7 +103,7 @@ export default {
       this.$router.push({path: '/', query: {createSuccess: this.createSuccess}})
     },
     registerUser () {
-      axios.post('http://localhost:5001/create_user', { 
+      axios.post(`${process.env.backendUrl}/create_user`, { 
         name: this.name,
         email: this.email,
         password: this.password

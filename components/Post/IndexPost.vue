@@ -37,7 +37,7 @@ export default {
     },
   },
   mounted: function () {
-    axios.get('http://localhost:5001/posts')
+    axios.get(`${process.env.backendUrl}/posts`)
       .then(response => {
         console.log(response)
         this.posts = response.data.posts
