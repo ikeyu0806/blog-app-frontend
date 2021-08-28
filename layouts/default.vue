@@ -22,34 +22,38 @@
             <v-list-item-title v-text="item.title" />
           </v-list-item-content>
         </v-list-item>
-        <v-list-item
-          v-for="(item, i) in loginItems"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item
-          v-for="(item, i) in logoutItems"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
+        <span v-if="!loggedIn">
+          <v-list-item
+            v-for="(item, i) in loginItems"
+            :key="i"
+            :to="item.to"
+            router
+            exact
+          >
+            <v-list-item-action>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title v-text="item.title" />
+            </v-list-item-content>
+          </v-list-item>
+        </span>
+        <span v-if="loggedIn">
+          <v-list-item
+            v-for="(item, i) in logoutItems"
+            :key="i"
+            :to="item.to"
+            router
+            exact
+          >
+            <v-list-item-action>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title v-text="item.title" />
+            </v-list-item-content>
+          </v-list-item>
+        </span>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar
@@ -96,6 +100,11 @@
 
 <script>
 export default {
+  computed: {
+    loggedIn() {
+      return this.$store.state.user.loggedIn
+    }
+  },
   data () {
     return {
       clipped: true,
@@ -119,7 +128,7 @@ export default {
           to: '/user/'
         }
       ],
-      logoutItems: [
+      loginItems: [
         {
           icon: 'mdi-account-plus',
           title: 'ログイン',
@@ -131,7 +140,7 @@ export default {
           to: '/user/create'
         }
       ],
-      loginItems: [
+      logoutItems: [
         {
           icon: 'mdi-account',
           title: 'マイページ',
@@ -146,9 +155,7 @@ export default {
   },
   mounted() {
     if (localStorage.yikegayaBlogSessionId) {
-      this.logoutItems = [];
-    } else {
-      this.loginItems = [];
+      this.$store.commit('user/changeLoggedIn')
     }
   },
 }
