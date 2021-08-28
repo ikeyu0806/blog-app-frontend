@@ -83,6 +83,7 @@
       </v-btn>
       <v-toolbar-title v-text="title" />
       <v-spacer />
+      <span v-if="loggedIn">{{ userName }}</span>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -110,7 +111,7 @@ export default {
       clipped: true,
       drawer: false,
       fixed: false,
-      showLogout: false,
+      userName: "",
       items: [
         {
           icon: 'mdi-note-multiple',
@@ -156,6 +157,7 @@ export default {
   mounted() {
     if (localStorage.yikegayaBlogSessionId) {
       this.$store.commit('user/changeLoggedIn')
+      this.userName = localStorage.getItem('yikegayaBlogUserName')
     }
   },
 }
