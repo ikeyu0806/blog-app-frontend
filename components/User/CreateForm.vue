@@ -113,6 +113,7 @@ export default {
           localStorage.setItem("yikegayaBlogSessionId", response.data.sessionId)
           localStorage.setItem("yikegayaBlogUserId", response.data.user_id)
           localStorage.setItem("yikegayaBlogUserName", response.data.user_name)
+          this.$store.commit('user/changeLoggedIn')
           this.$router.push({ path: '/user/' })
         })
         .catch(error => console.log(error))
