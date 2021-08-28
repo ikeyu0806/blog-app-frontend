@@ -50,6 +50,7 @@ export default {
       })
         .then(response => {
           console.log(response)
+          this.$store.commit('message/changeMessage', '記事を投稿しました')
           this.$router.push({ path: '/post/' })
         })
         .catch(error => console.log(error))

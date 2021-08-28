@@ -1,31 +1,44 @@
 <template>
-  <v-simple-table>
-  <thead>
-    <tr>
-      <th class="text-left">
-        記事タイトル
-      </th>
-      <th class="text-left">
-        投稿ユーザ
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr
-      v-for="post in posts"
-      :key="post.title"
-    > 
-      <td @click="postDetail(post.id)">{{ post.title }}</td>
-      <td @click="postDetail(post.id)">{{ post.user_name == null ? '匿名投稿' : post.user_name }}</td>
-    </tr>
-  </tbody>
-  </v-simple-table>
+  <div>
+    <span v-if="message">
+      <v-alert
+        type="success"
+        dismissible
+      >{{ message }}</v-alert>
+    </span>
+    <v-simple-table>
+    <thead>
+      <tr>
+        <th class="text-left">
+          記事タイトル
+        </th>
+        <th class="text-left">
+          投稿ユーザ
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        v-for="post in posts"
+        :key="post.title"
+      > 
+        <td @click="postDetail(post.id)">{{ post.title }}</td>
+        <td @click="postDetail(post.id)">{{ post.user_name == null ? '匿名投稿' : post.user_name }}</td>
+      </tr>
+    </tbody>
+    </v-simple-table>
+  </div>
 </template>
 
 <script>
 import axios from 'axios'
 
 export default {
+  computed: {
+    message() {
+      return this.$store.state.message.message
+    }
+  },
   data: function () {
     return {
       posts: []
