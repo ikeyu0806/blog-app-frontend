@@ -27,6 +27,7 @@ export default {
       localStorage.removeItem("yikegayaBlogUserId")
       localStorage.removeItem("yikegayaBlogUserName")
       this.$store.commit('user/changeLoggedIn')
+      this.$store.commit('message/changeMessage', 'ログアウトしました')
       this.$router.push({path: '/'})
     }
   }

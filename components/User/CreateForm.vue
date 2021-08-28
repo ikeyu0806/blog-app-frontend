@@ -114,7 +114,8 @@ export default {
           localStorage.setItem("yikegayaBlogUserId", response.data.user_id)
           localStorage.setItem("yikegayaBlogUserName", response.data.user_name)
           this.$store.commit('user/changeLoggedIn')
-          this.$router.push({ path: '/user/' })
+          this.$store.commit('message/changeMessage', 'ユーザ登録が完了しました')
+          this.$router.push({ path: '/' })
         })
         .catch(error => console.log(error))
     }
