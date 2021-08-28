@@ -22,6 +22,34 @@
             <v-list-item-title v-text="item.title" />
           </v-list-item-content>
         </v-list-item>
+        <v-list-item
+          v-for="(item, i) in loginItems"
+          :key="i"
+          :to="item.to"
+          router
+          exact
+        >
+          <v-list-item-action>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title v-text="item.title" />
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item
+          v-for="(item, i) in logoutItems"
+          :key="i"
+          :to="item.to"
+          router
+          exact
+        >
+          <v-list-item-action>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title v-text="item.title" />
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar
@@ -73,6 +101,7 @@ export default {
       clipped: true,
       drawer: false,
       fixed: false,
+      showLogout: false,
       items: [
         {
           icon: 'mdi-note-multiple',
@@ -85,15 +114,12 @@ export default {
           to: '/post/new_post'
         },
         {
-          icon: 'mdi-account',
-          title: 'マイページ',
-          to: '/user/mypage'
-        },
-        {
           icon: 'mdi-account-multiple',
           title: 'ユーザ一覧',
           to: '/user/'
-        },
+        }
+      ],
+      logoutItems: [
         {
           icon: 'mdi-account-plus',
           title: 'ログイン',
@@ -105,11 +131,25 @@ export default {
           to: '/user/create'
         }
       ],
+      loginItems: [
+        {
+          icon: 'mdi-account',
+          title: 'マイページ',
+          to: '/user/mypage'
+        },
+      ],
       miniVariant: false,
       right: true,
       title: 'yikegaya blog app',
       isLoggin: false
     }
-  }
+  },
+  mounted() {
+    if (localStorage.yikegayaBlogSessionId) {
+      this.logoutItems = [];
+    } else {
+      this.loginItems = [];
+    }
+  },
 }
 </script>
